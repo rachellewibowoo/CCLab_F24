@@ -314,7 +314,5 @@ function drawStudent(){
   pop();
 }
   
-//size becomes bigger when it rains more and more (it starts small)
-//it jumps from one place to another
-//
+
 
