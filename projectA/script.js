@@ -1,4 +1,3 @@
-let z;
 let x;
 let x2;
 let y = 0;
@@ -8,9 +7,12 @@ let y02;
 let s = [];
 let s2 = []; 
 let decrease = false;
+
 let o; 
 let a;
 let b;
+
+let z;
 
 let x1;
 let y1;
@@ -26,25 +28,22 @@ let speedw1 = 1;
 
 let w2= 1800;
 let speedw2 = 1;
-function setup() {
-  x1 = width/2;
-  y1 = height/2;
-  speedX = 3;
-  speedY = 2;
-  s1 = 100;
-  
-  createCanvas(800, 800);
-  colorMode(HSB); 
-  let o = 50;
-  
-//adding random water pools in the quad of nyu shanghai 
-  fill(0);
-  ellipse(random(width), random(700, 800), random(50), random(50));
+
+function setup() {  
+x1 = 200;
+y1 = 200;
+speedX = 3;
+speedY = 2;
+s1 = 100;  
+createCanvas(800, 800);
+colorMode(HSB); 
+let o = 50;
+
   
 //variable for the blobby interaction(expanding when touched)
-  z = round(random(50, 100));
+z = round(random(50, 100));
 
-  //variables for the clouds
+//variables for the clouds
    x = random(-width);
   y0 = random(50, 200);
   x2 = random(-width);
@@ -61,21 +60,30 @@ function setup() {
 function draw() {
   background(255);
   
-//students
+   
+//grey rainy sky
+  fill( 45);
+  rect(-20, 0, 900, 400);
+
+//adding campus buildings
+  fill(270, 100, 100, 100);
+  rect(50, 280, 300, 150);
   
-  //bringing a backpack
-  fill(0);
-  quad(5 + w, 450, 30+w, 450, 30+w, 480, 5 + w, 480);
-  fill(200, 50, 50);
-  quad(5 + w1, 450, 30+w1, 450, 30+w1, 480, 5 + w1, 480);
+  //nyush writing
+  fill(255);
+   rect(190, 370, 30, 10);
+   quad(190, 350, 210, 190, 210, 350, 190, 370);
   
-//student 1
+  
+//creating nyu students
+    
+//nyush student 1
   fill(0);
   stroke(0);
-  strokeWeight(5); 
-  
-  w = w + 3*speedw;
+  strokeWeight(5);  
+ 
   //head
+   w = w + speedw;
   fill(random(255), random(255), random(255));
   noStroke();
   circle(50 + w, 435, 20);
@@ -89,9 +97,14 @@ function draw() {
   //right leg
   line(50+w, 460, 60+w, 490);
   noStroke();
+ 
+  //bringing a backpack
+  fill(0);
+  quad(5 + w, 450, 30+w, 450, 30+w, 480, 5 + w, 480);
+     
   
-//student 2
-  w1 = w1 - 3*speedw1;
+//nyush student 2
+  w1 = w1 - 2*speedw1;
   console.log(w1);
   //head
   fill(55, 150, 150);
@@ -108,8 +121,12 @@ function draw() {
   line(50+w1, 460, 60+w1, 490);
   noStroke();
   
-//student 3
-  w2 = w2 - 5*speedw2;
+  //bringing a backpack
+  fill(200, 50, 50);
+  quad(5 + w1, 450, 30+w1, 450, 30+w1, 480, 5 + w1, 480);
+  
+//nyush student 3
+  w2 = w2 - 2*speedw2;
   console.log(w2);
   //head
   fill(100, 60, 10);
@@ -126,22 +143,17 @@ function draw() {
   line(50+w2, 460, 55+w2, 490);
   noStroke();
   
-  
-//grey rainy sky
-  fill(random(40, 45));
-  rect(-20, 0, 900, 400);
-
-//nyu shanghai quad greenspace area 
+//the nyush quad grass 
   fill(100, 50, 70, 255);
   rect(-20, 500, 900, 400);
   
-//making the quad area 
+//the nyush quad area 
   stroke(40);
   strokeWeight(2);
   fill(50);
   quad(250, 500, 100, 700, 700, 700, 550, 500);
   noStroke();
-  fill(random(26,30), random (88, 90), random (25, 30));
+  fill(random(25,30), random (85, 90), random (25, 35));
   quad(280, 505, 150, 670, 650, 670, 520, 505);
   fill(50);
   stroke(40);
@@ -151,7 +163,7 @@ function draw() {
   noStroke();
   drawFace(x1, y1, z);
 
-//making it bounce and jump accross the canvas
+//making blobby bounce and jump accross the canvas
   x1+=speedX;
   y1+=speedY;
   
@@ -162,20 +174,13 @@ function draw() {
     speedY = -speedY;
   }
 
-//  if (y1 > 700){
-//     y1 = 450
-//     }
-  
-//    if (x1 > 500 || x1 < 200){
-//      x1 = 300 
-//    }
-  
-
-
-  
+   
 //making rain
   noStroke();
   rain(random(width), random(height), 10, 10)
+  circle(random(width), random(height), 5, 5);
+  circle(random(width), random(height), 8, 8);
+
   
 //clouds
   cloud1(x, y);
@@ -183,7 +188,7 @@ function draw() {
   updateCloud();
   updateCloud2();
 
-//adding interaction (if blobby is pressed, it    expands) 
+//adding interaction (if blobby is pressed, it expands) 
    if (mouseIsPressed && checkMouse(x1, y1)){
      fill(random(255), random(255), random(255));
      z = z + 1;
@@ -205,7 +210,7 @@ function cloud1(x, y) {
     let i = round(map(angle, 0, 2 * PI, 0,      s.length));
     let u = x + 25 * cos(angle);
     let v = y + 25 * sin(angle);
-    fill(255, 10);
+    fill(random(50, 255));
     circle(u, v, s[i]);
     console.log(i);
   }
@@ -218,7 +223,7 @@ function cloud2(x, y) {
     let i = round(map(angle, 0, 2 * PI, 0,  s.length));
     let u = x + 25 * cos(angle);
     let v = y + 25 * sin(angle);
-    fill(255, 10);
+    fill(random(70, 255));
     circle(u, v, s2[i]);
     console.log(i);
   }
@@ -268,9 +273,6 @@ function drawFace(x1, y1, z, o, p) {
 }
 
 
-
-
-
 //adding interaction (if blobby is pressed, it will expand);
 function checkMouse(x1, y1) {
   let d = dist(mouseX, mouseY, x1, y1);
@@ -302,17 +304,8 @@ function rain(){
       rect(random(width), random(height), 5, 50);
 }
 
-//adding nyu students
-function drawStudent(){
-  push();
-  fill(0);
-  stroke(0);
-  strokeWeight(5); 
-  circle(width/2, height/2, 5);
-  line(width/2, 50, width/2, 100);
-  line(25, height/2, 70, height/2)
-  pop();
-}
   
+
+
 
 
