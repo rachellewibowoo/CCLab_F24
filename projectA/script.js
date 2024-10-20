@@ -91,15 +91,15 @@ function draw() {
 
 //adding campus buildings
   stroke(20);
-  strokeWeight(2);
+  strokeWeight(3);
   fill(50, 40, 30, 100);
   rect(450, 150, 380, 280);
   
   stroke(20);
-  strokeWeight(2);
+  strokeWeight(4);
   quad(30, 350, 30, 210, 330, 200, 330, 350);
   quad(30, 350, 30, 250, -50, 100, -50, 330)
-  quad(30, 250, 325, 200, -310, 160,-50, 250,);
+  quad(30, 250, 316, 200, -310, 160,-50, 250,);
   fill(255);
   stroke(20);
   strokeWeight(4);
@@ -260,6 +260,10 @@ if (w2 < -1000 ) {
   triangle(390, 510, 410, 550, 410, 530);
   triangle(390, 510, 410, 510, 420, 530);
   
+  triangle(350, 600, 360, 600, 360, 580);
+  triangle(340, 560, 360, 600, 360, 580);
+  triangle(340, 560, 360, 560, 330,580);
+  
   fill(random(80, 100), random(40, 50), random(70, 100));
   triangle(310, 640, 330, 650, 320, 630);
   triangle(320, 640, 340, 600, 320, 610);
@@ -267,6 +271,22 @@ if (w2 < -1000 ) {
   fill(random(80, 100), random(40, 50), random(70, 100));
   triangle(310, 550, 298, 550, 300, 530);
   triangle(310, 550, 310, 510, 300, 530);
+  
+  triangle(500, 560, 500, 540, 490, 520);
+  triangle(500, 560, 500, 540, 510, 520);
+  
+  triangle(480, 660, 480, 640, 470, 620);
+  triangle(480, 650, 480, 640, 500, 620);
+  
+   triangle(430, 610, 430, 590, 420, 570);
+  triangle(430, 610, 450, 590, 450, 570);
+  
+   triangle(540, 610, 540, 590, 530, 570);
+  triangle(540, 610, 540, 590, 560, 570);
+  
+   
+  
+  
 
 //blobby
   noStroke();
@@ -413,12 +433,3 @@ function rain(){
   fill(180, 60, 200, 300);
       rect(random(width), random(height), 5, 50);
 }
-
-function grass(x, y){
-   fill(random(80, 100), random(30, 50), random(70, 255));
-  triangle(400, 550, 410, 550, 410, 530);
-  triangle(400, 550, 410, 550, 410, 530);
-}
-
-  
-
