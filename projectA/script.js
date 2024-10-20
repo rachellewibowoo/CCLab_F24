@@ -29,15 +29,33 @@ let speedw1 = 1;
 let w2= 1800;
 let speedw2 = 1;
 
+let rectSize = 10;
+let x3;
+let y3; 
+
+let x4;
+let y4;
+let x5;
+let y5;
+let x6;
+let y6;
+
 function setup() {  
 x1 = 200;
 y1 = 200;
 speedX = 3;
 speedY = 2;
-s1 = 100;  
+s1 = 100;
 createCanvas(800, 800);
 colorMode(HSB); 
 let o = 50;
+  
+
+ noStroke();
+  for (let x3 = 0; x3 < width; x3 += rectSize) {
+    fill(random(255), random(255), random(255));
+    rect(x3, 0, rectSize, height);
+  }
 
   
 //variable for the blobby interaction(expanding when touched)
@@ -60,21 +78,71 @@ z = round(random(50, 100));
 function draw() {
   background(255);
   
-   
-//grey rainy sky
-  fill( 45);
+//pink sunset sky
+  fill( random(0,45));
+  fill(300, 60, 100, 250);
   rect(-20, 0, 900, 400);
+//adding triangle for landscape
+  fill(15);
+  triangle(-3000, 0, 200, 480, 600, 400);
+  
+  fill(300, 23, 100);
+  triangle(800, 0, 800, 430, 400, 378);
 
 //adding campus buildings
-  fill(270, 100, 100, 100);
-  rect(50, 280, 300, 150);
+  stroke(20);
+  strokeWeight(2);
+  fill(50, 40, 30, 100);
+  rect(450, 150, 380, 280);
+  
+  stroke(20);
+  strokeWeight(2);
+  quad(30, 350, 30, 210, 330, 200, 330, 350);
+  quad(30, 350, 30, 250, -50, 100, -50, 330)
+  quad(30, 250, 325, 200, -310, 160,-50, 250,);
+  fill(255);
+  stroke(20);
+  strokeWeight(4);
+  quad(-10, 275, 15, 280, 15, 320, -10, 315,);
+  
+  //windows
+  stroke(20);
+  strokeWeight(4);
+  fill(random(80, 200));
+  rect(452, 152, 50, 20);
+  rect(550, 200, 50, 50);
+  rect(750, 300, 50, 50);
+  rect(650, 200, 150, 50);
+  rect(460, 300, 130, 50);
+  noStroke();
   
   //nyush writing
+  fill(270, 100, 100, 100);
+  rect(50, 280, 300, 150);
+  //N
   fill(255);
-   rect(190, 370, 30, 10);
-   quad(190, 350, 210, 190, 210, 350, 190, 370);
-  
-  
+  quad(90, 385, 80, 385, 80, 335, 90, 335);
+  quad(120, 385, 110, 385, 80, 335, 90, 335);
+  quad(120, 385, 110, 385, 110, 335, 120, 335);
+  //Y
+  quad(155, 360, 145, 360, 130, 335, 140, 335);
+  quad(155, 360, 145, 360, 160, 335, 170, 335);
+  quad(155, 360, 145, 360, 145, 385, 155, 385);
+  //U
+  quad(190, 385, 180, 385, 180, 335, 190, 335);
+  quad(215, 385, 205, 385, 205, 335, 215, 335);
+  rect(180, 377, 30, 8);
+  //S
+  rect(228, 377, 35, 8);
+  rect(228, 355, 35, 8);
+  rect(228, 335, 35, 8);
+  rect(254, 357, 9, 27);
+  rect(228, 335, 9, 27);
+  //H
+  rect(276, 335, 10, 50);
+  rect(306, 335, 10, 50);
+  rect(276, 355, 35, 8);
+
 //creating nyu students
     
 //nyush student 1
@@ -101,6 +169,14 @@ function draw() {
   //bringing a backpack
   fill(0);
   quad(5 + w, 450, 30+w, 450, 30+w, 480, 5 + w, 480);
+
+//making sure the student comes back 
+ if (w > 1000){
+   speedw = -speedw;
+  }
+if (w < -100 ) {
+  speedw = -speedw;
+}
      
   
 //nyush student 2
@@ -125,6 +201,14 @@ function draw() {
   fill(200, 50, 50);
   quad(5 + w1, 450, 30+w1, 450, 30+w1, 480, 5 + w1, 480);
   
+//making sure the student comes back 
+ if (w1 > 1500){
+   speedw1 = -speedw1;
+  }
+if (w1 < -200 ) {
+  speedw1 = -speedw1;
+}
+  
 //nyush student 3
   w2 = w2 - 2*speedw2;
   console.log(w2);
@@ -143,6 +227,14 @@ function draw() {
   line(50+w2, 460, 55+w2, 490);
   noStroke();
   
+//making sure the student comes back 
+ if (w2 > 2000){
+   speedw2 = -speedw2;
+  }
+if (w2 < -1000 ) {
+  speedw2 = -speedw2;
+}
+  
 //the nyush quad grass 
   fill(100, 50, 70, 255);
   rect(-20, 500, 900, 400);
@@ -159,9 +251,27 @@ function draw() {
   stroke(40);
   strokeWeight(2);
   rect(100, 700, 600, 45);
+   
+  //grass
+  //stroke(120, 100, 30);
+  noStroke();
+  fill(random(80, 100), random(40, 50), random(70, 100));
+  triangle(400, 550, 410, 550, 410, 530);
+  triangle(390, 510, 410, 550, 410, 530);
+  triangle(390, 510, 410, 510, 420, 530);
   
+  fill(random(80, 100), random(40, 50), random(70, 100));
+  triangle(310, 640, 330, 650, 320, 630);
+  triangle(320, 640, 340, 600, 320, 610);
+  
+  fill(random(80, 100), random(40, 50), random(70, 100));
+  triangle(310, 550, 298, 550, 300, 530);
+  triangle(310, 550, 310, 510, 300, 530);
+
+//blobby
   noStroke();
   drawFace(x1, y1, z);
+
 
 //making blobby bounce and jump accross the canvas
   x1+=speedX;
@@ -210,7 +320,7 @@ function cloud1(x, y) {
     let i = round(map(angle, 0, 2 * PI, 0,      s.length));
     let u = x + 25 * cos(angle);
     let v = y + 25 * sin(angle);
-    fill(random(50, 255));
+    fill(random(50, 255), 127);
     circle(u, v, s[i]);
     console.log(i);
   }
@@ -223,7 +333,7 @@ function cloud2(x, y) {
     let i = round(map(angle, 0, 2 * PI, 0,  s.length));
     let u = x + 25 * cos(angle);
     let v = y + 25 * sin(angle);
-    fill(random(70, 255));
+    fill(random(70, 255), 127);
     circle(u, v, s2[i]);
     console.log(i);
   }
@@ -304,8 +414,11 @@ function rain(){
       rect(random(width), random(height), 5, 50);
 }
 
+function grass(x, y){
+   fill(random(80, 100), random(30, 50), random(70, 255));
+  triangle(400, 550, 410, 550, 410, 530);
+  triangle(400, 550, 410, 550, 410, 530);
+}
+
   
-
-
-
 
