@@ -1,4 +1,3 @@
-
 //cloud variables
 let x = [];
 let y = [];
@@ -13,64 +12,37 @@ let numberOfClouds = 50;
 let s = [];
 let s2 = [];
 let h = 190;
-
 let decrease = false;
-
-let o;
-let a;
-let b;
-
 let z;
-
 let x1;
 let y1;
-let speedX;
-let speedY;
-let s1;
+//mouth
+let r1;
+let r2;
+let f1;
+let f2;
 
+
+//variables for nyush students
 let w = 10;
 let speedw = 1;
-
 let w1 = 790;
 let speedw1 = 1;
-
 let w2 = 1800;
 let speedw2 = 1;
 
-let rectSize = 10;
-let x3;
-let y3;
-
-let x4;
-let y4;
-let x5;
-let y5;
-let x6;
-let y6;
-
 function setup() {
-  x1 = 200;
-  y1 = 200;
-  speedX = 3;
-  speedY = 2;
-  s1 = 100;
   let canvas = createCanvas(800, 800);
-  canvas.parent("p5-canvas-container");
+  //canvas.parent("p5-canvas-container");
   colorMode(HSB);
   let o = 50;
 
-  //create the clouds
+  //creating the clouds
   for (let i = 0; i < numberOfClouds; i++) {
     x[i] = random(-width);
     y[i] = 0;
     y0[i] = random(50, 150);
     cloudSize[i] = random(minSize, maxSize);
-  }
-
-  noStroke();
-  for (let x3 = 0; x3 < width; x3 += rectSize) {
-    fill(random(255), random(255), random(255));
-    rect(x3, 0, rectSize, height);
   }
 
   //variable for the blobby interaction(expanding when touched)
@@ -153,7 +125,6 @@ function draw() {
   rect(276, 355, 35, 8);
 
   //creating nyu students
-
   //nyush student 1
   fill(0);
   stroke(0);
@@ -302,20 +273,26 @@ function draw() {
   noStroke();
   h = map(z, 50, 100, 190, 360);
   console.log(z);
-  drawFace(x1, y1, z, h);
+   
+  drawFace(x1, y1, z, r1, r2);
+  //adding conditionals to make blobby die when it is poked and     expands to a certain point
+  if(z > 200){
+   z =0.00001
+  }
+  //making the mouth change downwards when blobby expands to a certain point
+  if(z > 80){
+    r1 = PI;
+    r2 = 0;
+  }
+  if(z < 80){
+    r1 = 0;
+    r2 = PI; 
+  }
+
 
   //making blobby bounce and jump accross the canvas
-  x1 = width/4+(1/2)*width*noise(frameCount*0.007);
-  y1 = (1/2)*height+ (3/8)*height*noise(frameCount*0.005);
-//   x1 += speedX;
-//   y1 += speedY;
-
-//   if (x1 < s1 / 2 || x1 > width - s1 / 2) {
-//     speedX = -speedX;
-//   }
-//   if (y1 < s1 / 2 || y1 > height - s1 / 2) {
-//     speedY = -speedY;
-//   }
+  x1 = width / 4 + (1 / 2) * width * noise(frameCount * 0.007);
+  y1 = (1 / 2) * height + (3 / 8) * height * noise(frameCount * 0.005);
 
   //making rain
   noStroke();
@@ -329,17 +306,17 @@ function draw() {
     z = z + 1;
   }
   console.log(decrease);
-  if (decrease && (z > 50)) {
+  if (decrease && z > 50) {
     z = lerp(z, 50, 0.2);
     //z = z - 10;
   }
   if (z < 51) {
     decrease = false;
-
   }
+
 }
 
-function drawFace(x1, y1, z, h) {
+function drawFace(x1, y1, z, r1, r2) {
   push();
   translate(x1, y1);
   //rotate(frameCount * 0.1);
@@ -348,14 +325,20 @@ function drawFace(x1, y1, z, h) {
   strokeWeight(0.5);
   stroke(255);
   ellipse(0, 0, z * 1.5, z * 1.5);
+  //eyes
   fill(255);
   circle(-z * 0.25, 0, z * 0.08);
   circle(z * 0.25, 0, z * 0.08);
   noFill();
   stroke(255);
   strokeWeight(3.5);
-  arc(0, 9, z * 0.18, z * 0.1, 0, PI);
+  //mouth 
+  arc(0, 9, z * 0.18, z * 0.1, r1, r2);
+  //eyebrows
+  arc(-16 - z*0.002, -12, z * 0.08, z * 0.03, r2, r1);
+  arc(16 + z*0.03, -10, z * 0.08, z * 0.02, r2, r1); 
   pop();
+  
 }
 
 //adding interaction (if blobby is pressed, it will expand);
