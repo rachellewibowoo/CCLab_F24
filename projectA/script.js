@@ -1,14 +1,22 @@
-let x;
-let x2;
-let y = 0;
-let y2 = 0;
-let y0;
-let y02;
+
+//cloud variables
+let x = [];
+let y = [];
+let y0 = [];
+let cloudSize = [];
+//min and max size of the cloud
+let minSize = 20;
+let maxSize = 100;
+let numberOfClouds = 50;
+
+//face variables
 let s = [];
-let s2 = []; 
+let s2 = [];
+let h = 190;
+
 let decrease = false;
 
-let o; 
+let o;
 let a;
 let b;
 
@@ -26,12 +34,12 @@ let speedw = 1;
 let w1 = 790;
 let speedw1 = 1;
 
-let w2= 1800;
+let w2 = 1800;
 let speedw2 = 1;
 
 let rectSize = 10;
 let x3;
-let y3; 
+let y3;
 
 let x4;
 let y4;
@@ -40,34 +48,34 @@ let y5;
 let x6;
 let y6;
 
-function setup() {  
-x1 = 200;
-y1 = 200;
-speedX = 3;
-speedY = 2;
-s1 = 100;
-let canvas = createCanvas(800, 800);
-canvas.parent("p5-canvas-container")
-colorMode(HSB); 
-let o = 50;
-  
+function setup() {
+  x1 = 200;
+  y1 = 200;
+  speedX = 3;
+  speedY = 2;
+  s1 = 100;
+  let canvas = createCanvas(800, 800);
+  canvas.parent("p5-canvas-container");
+  colorMode(HSB);
+  let o = 50;
 
- noStroke();
+  //create the clouds
+  for (let i = 0; i < numberOfClouds; i++) {
+    x[i] = random(-width);
+    y[i] = 0;
+    y0[i] = random(50, 150);
+    cloudSize[i] = random(minSize, maxSize);
+  }
+
+  noStroke();
   for (let x3 = 0; x3 < width; x3 += rectSize) {
     fill(random(255), random(255), random(255));
     rect(x3, 0, rectSize, height);
   }
 
-  
-//variable for the blobby interaction(expanding when touched)
-z = round(random(50, 100));
+  //variable for the blobby interaction(expanding when touched)
+  z = 50;
 
-//variables for the clouds
-   x = random(-width);
-  y0 = random(50, 200);
-  x2 = random(-width);
-  y02 = random(50, 200);
-  
   for (let i = 0; i < 5; i++) {
     s[i] = random(10, 100);
   }
@@ -78,34 +86,34 @@ z = round(random(50, 100));
 
 function draw() {
   background(255);
-  
-//pink sunset sky
-  fill( random(0,45));
+
+  //pink sunset sky
+  fill(random(0, 45));
   fill(300, 60, 100, 250);
   rect(-20, 0, 900, 400);
-//adding triangle for landscape
+  //adding triangle for landscape
   fill(15);
   triangle(-3000, 0, 200, 480, 600, 400);
-  
+
   fill(300, 23, 100);
   triangle(800, 0, 800, 430, 400, 378);
 
-//adding campus buildings
+  //adding campus buildings
   stroke(20);
   strokeWeight(3);
   fill(50, 40, 30, 100);
   rect(450, 150, 380, 280);
-  
+
   stroke(20);
   strokeWeight(4);
   quad(30, 350, 30, 210, 330, 200, 330, 350);
-  quad(30, 350, 30, 250, -50, 100, -50, 330)
-  quad(30, 250, 316, 200, -310, 160,-50, 250,);
+  quad(30, 350, 30, 250, -50, 100, -50, 330);
+  quad(30, 250, 316, 200, -310, 160, -50, 250);
   fill(255);
   stroke(20);
   strokeWeight(4);
-  quad(-10, 275, 15, 280, 15, 320, -10, 315,);
-  
+  quad(-10, 275, 15, 280, 15, 320, -10, 315);
+
   //windows
   stroke(20);
   strokeWeight(4);
@@ -116,7 +124,7 @@ function draw() {
   rect(650, 200, 150, 50);
   rect(460, 300, 130, 50);
   noStroke();
-  
+
   //nyush writing
   fill(270, 100, 100, 100);
   rect(50, 280, 300, 150);
@@ -144,15 +152,15 @@ function draw() {
   rect(306, 335, 10, 50);
   rect(276, 355, 35, 8);
 
-//creating nyu students
-    
-//nyush student 1
+  //creating nyu students
+
+  //nyush student 1
   fill(0);
   stroke(0);
-  strokeWeight(5);  
- 
+  strokeWeight(5);
+
   //head
-   w = w + speedw;
+  w = w + speedw;
   fill(random(255), random(255), random(255));
   noStroke();
   circle(50 + w, 435, 20);
@@ -162,27 +170,26 @@ function draw() {
   line(25 + w, 450, 70 + w, 455);
   line(50 + w, 460, 50 + w, 448);
   //left leg
-  line(30+w, 490, 50+w, 460);
+  line(30 + w, 490, 50 + w, 460);
   //right leg
-  line(50+w, 460, 60+w, 490);
+  line(50 + w, 460, 60 + w, 490);
   noStroke();
- 
+
   //bringing a backpack
   fill(0);
-  quad(5 + w, 450, 30+w, 450, 30+w, 480, 5 + w, 480);
+  quad(5 + w, 450, 30 + w, 450, 30 + w, 480, 5 + w, 480);
 
-//making sure the student comes back 
- if (w > 1000){
-   speedw = -speedw;
+  //making sure the student comes back
+  if (w > 1000) {
+    speedw = -speedw;
   }
-if (w < -100 ) {
-  speedw = -speedw;
-}
-     
-  
-//nyush student 2
-  w1 = w1 - 2*speedw1;
-  console.log(w1);
+  if (w < -100) {
+    speedw = -speedw;
+  }
+
+  //nyush student 2
+  w1 = w1 - 2 * speedw1;
+  //console.log(w1);
   //head
   fill(55, 150, 150);
   noStroke();
@@ -193,26 +200,26 @@ if (w < -100 ) {
   line(25 + w1, 455, 70 + w1, 450);
   line(50 + w1, 460, 50 + w1, 448);
   //left leg
-  line(30+w1, 490, 50+w1, 460);
+  line(30 + w1, 490, 50 + w1, 460);
   //right leg
-  line(50+w1, 460, 60+w1, 490);
+  line(50 + w1, 460, 60 + w1, 490);
   noStroke();
-  
+
   //bringing a backpack
   fill(200, 50, 50);
-  quad(5 + w1, 450, 30+w1, 450, 30+w1, 480, 5 + w1, 480);
-  
-//making sure the student comes back 
- if (w1 > 1500){
-   speedw1 = -speedw1;
+  quad(5 + w1, 450, 30 + w1, 450, 30 + w1, 480, 5 + w1, 480);
+
+  //making sure the student comes back
+  if (w1 > 1500) {
+    speedw1 = -speedw1;
   }
-if (w1 < -200 ) {
-  speedw1 = -speedw1;
-}
-  
-//nyush student 3
-  w2 = w2 - 2*speedw2;
-  console.log(w2);
+  if (w1 < -200) {
+    speedw1 = -speedw1;
+  }
+
+  //nyush student 3
+  w2 = w2 - 2 * speedw2;
+  //console.log(w2);
   //head
   fill(100, 60, 10);
   noStroke();
@@ -223,36 +230,36 @@ if (w1 < -200 ) {
   line(25 + w2, 450, 70 + w2, 458);
   line(50 + w2, 460, 50 + w2, 448);
   //left leg
-  line(45+w2, 490, 50+w2, 460);
+  line(45 + w2, 490, 50 + w2, 460);
   //right leg
-  line(50+w2, 460, 55+w2, 490);
+  line(50 + w2, 460, 55 + w2, 490);
   noStroke();
-  
-//making sure the student comes back 
- if (w2 > 2000){
-   speedw2 = -speedw2;
+
+  //making sure the student comes back
+  if (w2 > 2000) {
+    speedw2 = -speedw2;
   }
-if (w2 < -1000 ) {
-  speedw2 = -speedw2;
-}
-  
-//the nyush quad grass 
+  if (w2 < -1000) {
+    speedw2 = -speedw2;
+  }
+
+  //the nyush quad grass
   fill(100, 50, 70, 255);
   rect(-20, 500, 900, 400);
-  
-//the nyush quad area 
+
+  //the nyush quad area
   stroke(40);
   strokeWeight(2);
   fill(50);
   quad(250, 500, 100, 700, 700, 700, 550, 500);
   noStroke();
-  fill(random(25,30), random (85, 90), random (25, 35));
+  fill(random(25, 30), random(85, 90), random(25, 35));
   quad(280, 505, 150, 670, 650, 670, 520, 505);
   fill(50);
   stroke(40);
   strokeWeight(2);
   rect(100, 700, 600, 45);
-   
+
   //grass
   //stroke(120, 100, 30);
   noStroke();
@@ -260,149 +267,96 @@ if (w2 < -1000 ) {
   triangle(400, 550, 410, 550, 410, 530);
   triangle(390, 510, 410, 550, 410, 530);
   triangle(390, 510, 410, 510, 420, 530);
-  
+
   triangle(350, 600, 360, 600, 360, 580);
   triangle(340, 560, 360, 600, 360, 580);
-  triangle(340, 560, 360, 560, 330,580);
-  
+  triangle(340, 560, 360, 560, 330, 580);
+
   fill(random(80, 100), random(40, 50), random(70, 100));
   triangle(310, 640, 330, 650, 320, 630);
   triangle(320, 640, 340, 600, 320, 610);
-  
+
   fill(random(80, 100), random(40, 50), random(70, 100));
   triangle(310, 550, 298, 550, 300, 530);
   triangle(310, 550, 310, 510, 300, 530);
-  
+
   triangle(500, 560, 500, 540, 490, 520);
   triangle(500, 560, 500, 540, 510, 520);
-  
+
   triangle(480, 660, 480, 640, 470, 620);
   triangle(480, 650, 480, 640, 500, 620);
-  
-   triangle(430, 610, 430, 590, 420, 570);
+
+  triangle(430, 610, 430, 590, 420, 570);
   triangle(430, 610, 450, 590, 450, 570);
-  
-   triangle(540, 610, 540, 590, 530, 570);
+
+  triangle(540, 610, 540, 590, 530, 570);
   triangle(540, 610, 540, 590, 560, 570);
-  
-   
-  
-  
 
-//blobby
+  //draw and update clouds
+  for (let i = 0; i < numberOfClouds; i++) {
+    cloud(x[i], y[i], y0[i], cloudSize[i]);
+    updateCloud();
+  }
+
+  //blobby
   noStroke();
-  drawFace(x1, y1, z);
+  h = map(z, 50, 100, 190, 360);
+  console.log(z);
+  drawFace(x1, y1, z, h);
 
+  //making blobby bounce and jump accross the canvas
+  x1 = width/4+(1/2)*width*noise(frameCount*0.007);
+  y1 = (1/2)*height+ (3/8)*height*noise(frameCount*0.005);
+//   x1 += speedX;
+//   y1 += speedY;
 
-//making blobby bounce and jump accross the canvas
-  x1+=speedX;
-  y1+=speedY;
-  
-  if (x1 < s1/2|| x1 > width-s1/2){
-    speedX = -speedX;
-  }
-  if (y1 < s1/2 || y1 > height-s1/2){
-    speedY = -speedY;
-  }
+//   if (x1 < s1 / 2 || x1 > width - s1 / 2) {
+//     speedX = -speedX;
+//   }
+//   if (y1 < s1 / 2 || y1 > height - s1 / 2) {
+//     speedY = -speedY;
+//   }
 
-   
-//making rain
+  //making rain
   noStroke();
-  rain(random(width), random(height), 10, 10)
-  circle(random(width), random(height), 5, 5);
-  circle(random(width), random(height), 8, 8);
+  rain(random(width), random(height), 10);
+  circle(random(width), random(height), 5);
+  circle(random(width), random(height), 8);
 
-  
-//clouds
-  cloud1(x, y);
-  cloud2(x2, y2);
-  updateCloud();
-  updateCloud2();
+  //adding interaction (if blobby is pressed, it expands)
+  if (mouseIsPressed && checkMouse(x1, y1)) {
+    fill(random(255), random(255), random(255));
+    z = z + 1;
+  }
+  console.log(decrease);
+  if (decrease && (z > 50)) {
+    z = lerp(z, 50, 0.2);
+    //z = z - 10;
+  }
+  if (z < 51) {
+    decrease = false;
 
-//adding interaction (if blobby is pressed, it expands) 
-   if (mouseIsPressed && checkMouse(x1, y1)){
-     fill(random(255), random(255), random(255));
-     z = z + 1;
-   }
-    console.log(decrease);
-  if(decrease && z > 50 | z < 30){
-  z = z - 10;
-   }
-   if(z==50){
-     decrease = false;
-   }
-}
-
-//making random clouds reappear again and again
-function cloud1(x, y) {
-  noStroke();
-  circle(x, y, 50);
-  for (let angle = 0; angle < 2 * PI; angle += PI /    4) {
-    let i = round(map(angle, 0, 2 * PI, 0,      s.length));
-    let u = x + 25 * cos(angle);
-    let v = y + 25 * sin(angle);
-    fill(random(50, 255), 127);
-    circle(u, v, s[i]);
-    console.log(i);
   }
 }
 
-function cloud2(x, y) {
-  noStroke();
-  circle(x, y, 50);
-  for (let angle = 0; angle < 2 * PI; angle += PI /    4) {
-    let i = round(map(angle, 0, 2 * PI, 0,  s.length));
-    let u = x + 25 * cos(angle);
-    let v = y + 25 * sin(angle);
-    fill(random(70, 255), 127);
-    circle(u, v, s2[i]);
-    console.log(i);
-  }
-}
-
-function updateCloud() {
-  x = x + 2;
-  y = y0 + 10 * noise(frameCount * 0.1);
-  if (x > width + 100) {
-    x = random(-width);
-    y0 = random(50, 200);
-    for (let i = 0; i < 5; i++) {
-      s[i] = random(10, 100);
-    }
-  }
-}
-
-function updateCloud2() {
-  x2 = x2 + 2;
-  y2 = y02 + 10 * noise(frameCount * 0.1);
-  if (x2 > width + 100) {
-    x2 = random(-width);
-    y02 = random(50, 200);
-    for (let i = 0; i < 5; i++) {
-      s2[i] = random(10, 100);
-    }
-  }
-}
-
-function drawFace(x1, y1, z, o, p) {
+function drawFace(x1, y1, z, h) {
   push();
   translate(x1, y1);
   //rotate(frameCount * 0.1);
-  fill(190, 80, 200, 400);
-  noStroke(); 
+  fill(h, 80, 200);
+  noStroke();
   strokeWeight(0.5);
   stroke(255);
-  ellipse(0, 0, z*1.5, z*1.5);
+  ellipse(0, 0, z * 1.5, z * 1.5);
   fill(255);
   circle(-z * 0.25, 0, z * 0.08);
   circle(z * 0.25, 0, z * 0.08);
   noFill();
   stroke(255);
-  strokeWeight(3.5); 
+  strokeWeight(3.5);
   arc(0, 9, z * 0.18, z * 0.1, 0, PI);
   pop();
 }
-
 
 //adding interaction (if blobby is pressed, it will expand);
 function checkMouse(x1, y1) {
@@ -410,8 +364,7 @@ function checkMouse(x1, y1) {
   if (d < z) {
     //the radius of the face
     return true;
-  } 
-     else {
+  } else {
     return false;
   }
 }
@@ -423,14 +376,46 @@ function mouseReleased() {
   }
 }
 
-//adding rain effects 
-function rain(){
+//adding rain effects
+function rain() {
   fill(180, 60, 250, 300);
-      rect(random(width), random(height), 5, 50);
+  rect(random(width), random(height), 5, 50);
   fill(180, 60, 150, 280);
-      rect(random(width), random(height), 5, 50);
+  rect(random(width), random(height), 5, 50);
   fill(180, 60, 100, 250);
-      rect(random(width), random(height), 5, 50);
+  rect(random(width), random(height), 5, 50);
   fill(180, 60, 200, 300);
-      rect(random(width), random(height), 5, 50);
+  rect(random(width), random(height), 5, 50);
+}
+
+function cloud(x, y, y0, s) {
+  push();
+  colorMode(RGB);
+  noStroke();
+  fill(255);
+  translate(x, y);
+  circle(0, 0, s * 0.5);
+
+  for (let angle = 0; angle < 2 * PI; angle += PI / 15) {
+    rotate(angle);
+    //use different opacities
+    fill(255, 50 * noise(angle * y0) + 100);
+    circle(s * 0.4, 0, 1.2 * s * noise(angle * y0));
+  }
+  pop();
+}
+
+function updateCloud() {
+  for (let i = 0; i < numberOfClouds; i++) {
+    //it will move faster if it is smaller
+    let speedCloud = map(cloudSize[i], minSize, maxSize, 0.02, 0.005);
+    x[i] = x[i] + speedCloud;
+    //will move more if it is smaller
+    y[i] = y0[i] + (500 / cloudSize[i]) * noise(frameCount * 0.03);
+    if (x[i] > width + 100) {
+      x[i] = random(-width);
+      y0[i] = random(50, 150);
+      cloudSize[i] = random(minSize, maxSize);
+    }
+  }
 }
