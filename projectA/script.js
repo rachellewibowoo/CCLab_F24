@@ -33,7 +33,7 @@ let speedw2 = 1;
 
 function setup() {
   let canvas = createCanvas(800, 800);
-  //canvas.parent("p5-canvas-container");
+  canvas.parent("p5-canvas-container");
   colorMode(HSB);
   let o = 50;
 
