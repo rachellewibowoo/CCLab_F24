@@ -276,7 +276,7 @@ function draw() {
    
   drawFace(x1, y1, z, r1, r2);
   //adding conditionals to make blobby die when it is poked and     expands to a certain point
-  if(z > 200){
+  if(z > 380){
    z =0.00001
   }
   //making the mouth change downwards when blobby expands to a certain point
