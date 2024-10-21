@@ -46,7 +46,8 @@ y1 = 200;
 speedX = 3;
 speedY = 2;
 s1 = 100;
-createCanvas(800, 800);
+let canvas = createCanvas(800, 800);
+canvas.parent("p5-canvas-container")
 colorMode(HSB); 
 let o = 50;
   
