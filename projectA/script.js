@@ -13,6 +13,7 @@ let s = [];
 let s2 = [];
 let h = 190;
 let decrease = false;
+let ressurected = true;
 let z;
 let x1;
 let y1;
@@ -22,7 +23,6 @@ let r2;
 let f1;
 let f2;
 
-
 //variables for nyush students
 let w = 10;
 let speedw = 1;
@@ -30,6 +30,11 @@ let w1 = 790;
 let speedw1 = 1;
 let w2 = 1800;
 let speedw2 = 1;
+
+//grass variables
+// let r;
+let die = false;
+let b = 100;
 
 function setup() {
   let canvas = createCanvas(800, 800);
@@ -232,9 +237,8 @@ function draw() {
   rect(100, 700, 600, 45);
 
   //grass
-  //stroke(120, 100, 30);
   noStroke();
-  fill(random(80, 100), random(40, 50), random(70, 100));
+  fill(80, 120, b);
   triangle(400, 550, 410, 550, 410, 530);
   triangle(390, 510, 410, 550, 410, 530);
   triangle(390, 510, 410, 510, 420, 530);
@@ -242,18 +246,20 @@ function draw() {
   triangle(350, 600, 360, 600, 360, 580);
   triangle(340, 560, 360, 600, 360, 580);
   triangle(340, 560, 360, 560, 330, 580);
-
-  fill(random(80, 100), random(40, 50), random(70, 100));
+  
+  fill(130, 120, b);
   triangle(310, 640, 330, 650, 320, 630);
   triangle(320, 640, 340, 600, 320, 610);
-
-  fill(random(80, 100), random(40, 50), random(70, 100));
+  
+  fill(110, 80, b);
   triangle(310, 550, 298, 550, 300, 530);
   triangle(310, 550, 310, 510, 300, 530);
 
+  fill(100, 70, b);
   triangle(500, 560, 500, 540, 490, 520);
   triangle(500, 560, 500, 540, 510, 520);
 
+   fill(110, 80, b);
   triangle(480, 660, 480, 640, 470, 620);
   triangle(480, 650, 480, 640, 500, 620);
 
@@ -263,32 +269,47 @@ function draw() {
   triangle(540, 610, 540, 590, 530, 570);
   triangle(540, 610, 540, 590, 560, 570);
 
-  //draw and update clouds
-  for (let i = 0; i < numberOfClouds; i++) {
-    cloud(x[i], y[i], y0[i], cloudSize[i]);
-    updateCloud();
+  //adding conditionals to make blobby die when it is poked and expands to a certain point (it will die and the plants will wither);
+  if (z > 220) {
+    z = 0.000001;
+    die= true;  
+  }
+  if(die==true){
+    b = lerp(b, 13, 0.05);  
+  }
+  
+  //making blobby able to be ressurected if any key is pressed
+  if(keyIsPressed){
+    z = 50;
+    die= false;  
+  }
+  
+  if(die == false){
+    b = lerp(b, 100, 0.3);
+  }
+  
+    
+  //making the mouth change downwards when blobby expands to a certain point
+  if (z > 80) {
+    r1 = PI;
+    r2 = 0;
+  }
+  if (z < 80) {
+    r1 = 0;
+    r2 = PI;
   }
 
   //blobby
   noStroke();
   h = map(z, 50, 100, 190, 360);
   console.log(z);
-   
   drawFace(x1, y1, z, r1, r2);
-  //adding conditionals to make blobby die when it is poked and     expands to a certain point
-  if(z > 500){
-   z =0.00001
-  }
-  //making the mouth change downwards when blobby expands to a certain point
-  if(z > 80){
-    r1 = PI;
-    r2 = 0;
-  }
-  if(z < 80){
-    r1 = 0;
-    r2 = PI; 
-  }
 
+  //draw and update clouds
+  for (let i = 0; i < numberOfClouds; i++) {
+    cloud(x[i], y[i], y0[i], cloudSize[i]);
+    updateCloud();
+  }
 
   //making blobby bounce and jump accross the canvas
   x1 = width / 4 + (1 / 2) * width * noise(frameCount * 0.007);
@@ -300,6 +321,7 @@ function draw() {
   circle(random(width), random(height), 5);
   circle(random(width), random(height), 8);
 
+  
   //adding interaction (if blobby is pressed, it expands)
   if (mouseIsPressed && checkMouse(x1, y1)) {
     fill(random(255), random(255), random(255));
@@ -313,7 +335,6 @@ function draw() {
   if (z < 51) {
     decrease = false;
   }
-
 }
 
 function drawFace(x1, y1, z, r1, r2) {
@@ -332,13 +353,12 @@ function drawFace(x1, y1, z, r1, r2) {
   noFill();
   stroke(255);
   strokeWeight(3.5);
-  //mouth 
+  //mouth
   arc(0, 9, z * 0.18, z * 0.1, r1, r2);
   //eyebrows
-  arc(-16 - z*0.002, -12, z * 0.08, z * 0.03, r2, r1);
-  arc(16 + z*0.03, -10, z * 0.08, z * 0.02, r2, r1); 
+  arc(-16 - z * 0.002, -12, z * 0.08, z * 0.03, r2, r1);
+  arc(16 + z * 0.03, -10, z * 0.08, z * 0.02, r2, r1);
   pop();
-  
 }
 
 //adding interaction (if blobby is pressed, it will expand);
@@ -361,15 +381,17 @@ function mouseReleased() {
 
 //adding rain effects
 function rain() {
-  fill(180, 60, 250, 300);
+  fill(180, 60, 150, 280);
   rect(random(width), random(height), 5, 50);
   fill(180, 60, 150, 280);
   rect(random(width), random(height), 5, 50);
-  fill(180, 60, 100, 250);
+  fill(180, 60, 150, 280);
   rect(random(width), random(height), 5, 50);
-  fill(180, 60, 200, 300);
+  fill(180, 60, 150, 280);
   rect(random(width), random(height), 5, 50);
 }
+
+
 
 function cloud(x, y, y0, s) {
   push();
