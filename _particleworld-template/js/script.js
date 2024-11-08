@@ -1,7 +1,8 @@
 // CCLab Mini Project - 9.R Particle World Template
 
-let NUM_OF_PARTICLES = 1; // Decide the initial number of particles.
+let NUM_OF_PARTICLES = 1000; // Decide the initial number of particles.
 let particles = [];
+let s = 30; 
 
 function setup() {
   let canvas = createCanvas(800, 600);
@@ -12,6 +13,12 @@ function setup() {
   for (let i = 0; i < NUM_OF_PARTICLES; i++) {
     particles[i] = new Particle(random(width), random(height));
   }
+
+  //generate mesh-like black opaque circles in the background across the canvas
+  for (let i = 0; i < 3; i++) {
+    circle(i, height/2, 100);
+  }
+
 
 }
 
@@ -24,10 +31,32 @@ function draw() {
     let p = particles[i];
     p.update();
     p.display();
+
+  //generate mesh-like black opaque circles in the background across the canvas
+    for (let i = -10; i < width; i+=random(2, 7)) {
+      fill(random(250), 0.03); 
+      strokeWeight(random(0.5, 2));
+      circle(i*s, random(0, 600), random(20, 25));
+    }
+
+   //generate blobbish rectangles to the background
+   for (let i = -10; i < width; i+=random(2, 7)) {
+    circle(i*s, random(0, 600), random(20, 25));
   }
-  //  let NUM_OF_PARTICLES = n; 
-  //  n = 1; 
-  //  n = n + 1; 
+  }
+
+ 
+  //adding interaction: an opaque rectangle appears when we press our mouse, 
+  //and its positions will follow our mouse(mouseX,mouseY), can be seen as a frame to capture our memories & emotions
+  if(mouseIsPressed){
+    push();
+    fill(255, 0.5); 
+    stroke(250); 
+    strokeWeight(3); 
+    rect(mouseX, mouseY, 300, 250);
+    pop(); 
+  }
+  
 }
 
 class Particle {
@@ -39,13 +68,16 @@ class Particle {
     this.y = startY;
     this.dia = random(10, 50);
     this.c = random(360); 
+  
   }
   // methods (functions): particle's behaviors
   update() {
     // (add) 
     //making the stars flicker
-    this.c = color(random (360), 50, 50); 
-    this.dia = 3 + noise(frameCount *0.5); 
+    this.c = color(random (360), random(100), random(100)); 
+    // this.dia = 5 + noise(frameCount *0.5); 
+    this.dia = random(10,25 ); 
+  
 
   }
   display() {
@@ -55,9 +87,11 @@ class Particle {
     translate(this.x, this.y);
     noStroke(); 
     fill(this.c);
-    //circles or stars
+    //colorful circles & rectangles
     circle(0, 0, this.dia);
-
+    rect(mouseX, mouseY, 10, 10); 
+    rect(random(), mouseY, 25, 25);
     pop();
+
   }
 }
