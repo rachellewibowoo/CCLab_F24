@@ -1,0 +1,79 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0; 
+}
+
+div.box{
+    background-color: hotpink;
+    width: 100px;
+    height: 100px;
+    padding: 10px; 
+    /*border: 3px dashed blueviolet;*/
+    margin: 5px; 
+    display: inline-block;
+}
+
+div.box-1{
+    background-color: hotpink;
+     /* position: fixed;*/
+    display: none; 
+    /* this hides an element */
+
+    /* absolute is used to assume other elements are gone, */
+    /* relative is used to positions shapes after the other regular positions of other elements */
+    /* fixed will assume other elements are gone but it will place the element there if we scroll down the screen */
+    /* if sticky, can't specify pixels of top and left */
+
+    /* top: 10%; 
+    left: 15%;  */ 
+}
+/* percentages are used to better fit to many devices' screens */
+
+/* 
+1. div is for making the words go from one column to another (space between upper and lower sentences)
+span is for creating a space between words in a sentence
+can only add one p5 sketch to html file
+
+2. Developer tools: command+option+c
+
+3. Border + dashed: dashes along the border
+
+4. Margin: layout of the content */
+
+div.box-2{
+    background-color: gold;
+}
+
+div.box-3{
+    background-color: aqua;
+    /* position: sticky; */
+    /* top: 100px; */
+}
+
+div.flexbox-content{
+    display: flex; 
+    justify-content: center; 
+    width: 50%; 
+    margin: auto; 
+} 
+
+.jacquard-24-regular {
+    font-family: "Jacquard 24", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}  
+
+#title{
+    font-family: "Jacquard 24", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 10cm; 
+    background-color: coral;
+    text-align: center; 
+    /* margin: 20; */
+    padding: 120px; 
+}   
+.frame-1{
+    width: 100%;
+    height: 100%;
+}
