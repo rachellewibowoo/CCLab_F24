@@ -1,0 +1,37 @@
+body{
+    margin: 0px;
+    background-color: blueviolet;
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+   }
+   .box{
+       padding: 80px 40px;
+       margin: 5px;
+   }
+   .box-1{
+       background-color: rgb(250, 136, 231); 
+       font-weight: 520;
+   }
+   .box-2{
+       background-color: rgb(233, 250, 136); 
+   }
+   .box-3{
+       background-color: rgb(29, 223, 223); 
+       font-weight: 520;
+   }
+   .flex-container{
+       display: flex;
+       width: 80%;
+       margin: auto;
+       justify-content:space-evenly;    
+       flex-wrap: wrap;   
+   }
+   
+   .big{
+       width: 100%;
+       background-color: whitesmoke;
+       text-align: center;
+       font-size: 50px;
+       font-weight: 500;
+   }
+   
