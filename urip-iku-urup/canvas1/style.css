@@ -1,7 +1,8 @@
-html, body {
-    margin: 0;
-    padding: 0;
-  }
-  canvas {
-    display: block;
-  }
+.canvas1Frame{
+  width: 500px;
+  height: 800px;
+}
+
+iframe{
+  display: block;
+}
