@@ -23,10 +23,6 @@ body {
     overflow: hidden; /* ensures sketches stay within the box */
 }
 
-.spacer {
-    height: 9000px; /* large space between 1st and 2nd boxes */
-}
-
 .canvas1Frame{
     width: 100%;
     height: 100%;
