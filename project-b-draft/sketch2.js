@@ -2,44 +2,109 @@ let vid;
 let playing = true;
 let scene1 = true; // default scene (ur landing page now)
 let scene2 = false; // the new scene to change into
+let scene3 = false; 
+let scene4 = false; 
+let scene5 = false; 
+let scene6 = false; 
+let allVideos = ["1.mp4", "2.mp4", "3.mp4", "4.mp4", "5.mp4"];
+let videos = [];
+let videoPlay;
+
+function preload() {
+  // videos.push[i];
+  // videos.play();
+  for (let i = 0; i < allVideos.length; i++) {
+    videos.push(createVideo(allVideos[i]));
+    videos[i].size(600, 500);
+    videos[i].volume(0.1);
+    videos[i].loop();
+    videos[i].hide();
+  }
+}
 
 function setup() {
   createCanvas(600, 500);
-  // noCanvas();
-
-  vid = createVideo("journeyofemotions.mp4");
-  vid.size(600, 500);
-  vid.volume(0);
-  vid.loop();
-  vid.hide(); // hides the html video loader
-  // vid.position(0.0);
 
 }
 
 function draw() {
   background(220);
-  let img = vid.get();
-  image(img, 0, 0); // redraws the video frame by frame in  p5
-  if ((scene1 == true)) {
+ 
+  if (scene1 == true) {
+    videoPlay = videos[0].get();
+    videos[1].volume(0); 
+    videos[2].volume(0); 
+    videos[3].volume(0); 
+    videos[4].volume(0); 
+ 
     
-    
-    let mouseDist = dist(mouseX, mouseY, width / 2, height / 2);
-    // mouse's distance to the circle => detecting whether the button is clicked ^
-    if (mouseDist <= 30 / 2 && mouseIsPressed) {
-      scene2 = true;
-      scene1 = false;
-    }
-      } else if (scene2 == true) {
-    rect(width / 2, height / 2, 100, 100);
+  } else if (scene2 == true) {
+    videoPlay = videos[1].get();
+    videos[1].volume(0.1); 
+    videos[0].volume(0); 
+    videos[2].volume(0); 
+    videos[3].volume(0); 
+    videos[4].volume(0); 
+ 
   }
+   if (scene3 == true){
+      videoPlay = videos[2].get();
+     videos[0].volume(0); 
+     videos[1].volume(0); 
+     videos[2].volume(1);
+     videos[3].volume(0); 
+     videos[4].volume(0); 
+  
+   }
+     else if(scene4 == true){
+       videoPlay = videos[3].get();
+     videos[0].volume(0); 
+     videos[1].volume(0); 
+     videos[2].volume(0); 
+     videos[3].volume(0.1); 
+     videos[4].volume(0); 
+
+     }
+  
+     if (scene5 == true){
+      videoPlay = videos[4].get();
+     videos[0].volume(0); 
+     videos[1].volume(0); 
+     videos[2].volume(0); 
+     videos[3].volume(0); 
+     videos[4].volume(0.1); 
+    
+       
+   }
+     else if(scene6 == true){
+       videoPlay = videos[5].get();
+     videos[0].volume(0); 
+     videos[1].volume(0); 
+     videos[2].volume(0); 
+     videos[3].volume(0); 
+     videos[4].volume(0); 
+     videos[5].volume(0.1); 
+     }
+  
+  image(videoPlay, 0, 0);
 }
 
 function mousePressed() {
- if (playing) {
-   vid.pause();
- }
-  else {
-    vid.play();
+  if (scene1 == true && mouseX > 200 && mouseX < 400) {
+    scene1 = false;
+    scene2 = true;
   }
-  playing = !playing;
+  if (scene2 == true && mouseX > 400 ){
+    scene2 = false; 
+    scene3 = true; 
+  }
+  if (scene3 == true && mouseX > 400 && mouseY < 200 ){
+    scene3 = false; 
+    scene4 = true; 
+  }
+  if (scene4 == true && mouseX < 300 && mouseY < 300){
+    scene4 = false; 
+    scene5 = true; 
+  }
+
 }
