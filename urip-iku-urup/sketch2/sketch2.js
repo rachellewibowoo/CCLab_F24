@@ -6,7 +6,7 @@ let scene3 = false;
 let scene4 = false; 
 let scene5 = false; 
 let scene6 = false; 
-let allVideos = ["1.mp4", "2.mp4", "3.mp4", "4.mp4", "5.mp4"];
+let allVideos = ["assets/6.mp4", "assets/7.mp4", "assets/8.mp4", "assets/9.mp4", "assets/10.mp4"];
 let videos = [];
 let videoPlay;
 
@@ -108,4 +108,19 @@ function mousePressed() {
     scene5 = true; 
   }
 
+}
+
+function windowResized() {
+    // Resize the canvas whenever the window or container is resized
+    resizeCanvasToParent();
+}
+
+function resizeCanvasToParent() {
+    // Get the size of the parent div
+    const parent = canvas.parent();
+    const width = parent.offsetWidth;
+    const height = parent.offsetHeight;
+
+    // Resize the canvas to match the parent div's dimensions
+    resizeCanvas(width, height);
 }

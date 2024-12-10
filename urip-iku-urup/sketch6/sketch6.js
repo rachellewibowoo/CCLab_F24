@@ -23,7 +23,7 @@ function setup() {
     tracker.start(capture.elt);
 
     // Video setup
-    vid = createVideo("sketch.mp4");
+    vid = createVideo("assets/13.mp4");
     vid.size(w, h); // Full canvas video
     vid.volume(0.1);
     vid.loop();
@@ -82,4 +82,19 @@ function mousePressed() {
         vid.play();
     }
     playing = !playing;
+}
+
+function windowResized() {
+    // Resize the canvas whenever the window or container is resized
+    resizeCanvasToParent();
+}
+
+function resizeCanvasToParent() {
+    // Get the size of the parent div
+    const parent = canvas.parent();
+    const width = parent.offsetWidth;
+    const height = parent.offsetHeight;
+
+    // Resize the canvas to match the parent div's dimensions
+    resizeCanvas(width, height);
 }

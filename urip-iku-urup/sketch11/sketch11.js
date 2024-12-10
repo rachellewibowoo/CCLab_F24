@@ -6,7 +6,7 @@ function setup() {
   canvas.parent("sketch11"); 
   // noCanvas();
 
-  vid = createVideo("sketch.mp4");
+  vid = createVideo("assets/5.mp4");
   vid.size(600, 500);
   vid.volume(0.1);
   vid.loop();
@@ -28,4 +28,19 @@ function mousePressed() {
     vid.play();
   }
   playing = !playing;
+}
+
+function windowResized() {
+    // Resize the canvas whenever the window or container is resized
+    resizeCanvasToParent();
+}
+
+function resizeCanvasToParent() {
+    // Get the size of the parent div
+    const parent = canvas.parent();
+    const width = parent.offsetWidth;
+    const height = parent.offsetHeight;
+
+    // Resize the canvas to match the parent div's dimensions
+    resizeCanvas(width, height);
 }

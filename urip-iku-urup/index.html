@@ -6,32 +6,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Div Boxes</title>
     <link rel="stylesheet" href="styles.css">
-   
+
+    <style>
+
+    .sketch-container {
+    border: 1px solid #ccc;  /* Optional for visual purposes */
+    width: 100%;
+    height: 8000px;
+    margin: 10px 0;
+    text-align: center;
+    line-height: 100px;
+    font-size: 18px;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* ensures sketches stay within the box */
+    }
+    </style>
 
 </head>
 <body>
     <div id="sketch1" class="box"></div>
 
+    <div id="sketch10" class="sketch-container"></div>
 
-    <div id="sketch2" class="box"></div>
+    <div id="sketch11" class="sketch-container"></div>
 
-    <div id="sketch3" class="box"></div>
+    <div id="sketch2" class="sketch-container"></div>
 
-    <div id="sketch4" class="box"></div>
+    <div id="sketch3" class="sketch-container"></div>
 
-    <div id="sketch5" class="box"></div>
+    <div id="sketch4" class="sketch-container"></div>
 
-    <div id="sketch6" class="box"></div>
+    <div id="sketch5" class="sketch-container"></div>
 
-    <div id="sketch7" class="box"></div>
+    <div id="sketch6" class="sketch-container"></div>
 
-    <div id="sketch8" class="box"></div>
+    <div id="sketch7" class="sketch-container"></div>
 
-    <div id="sketch9" class="box"></div>
+    <div id="sketch8" class="sketch-container"></div>
 
-    <div id="sketch10" class="box"></div>
+    <div id="sketch9" class="sketch-container"></div>
 
-    <div id="sketch11" class="box"></div>
+    
+
+    <script>
+        // Lazy load the sketch when the div is in view
+        function loadSketch(sketchId) {
+            const script = document.createElement('script');
+            script.src = `${sketchId}.js`; // Dynamically load the sketch file
+            document.body.appendChild(script);
+        }
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sketchId = entry.target.id;
+                    loadSketch(sketchId);  // Lazy-load the sketch
+                    observer.unobserve(entry.target);  // Stop observing once loaded
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.sketch-container').forEach(container) => {
+            observer.observe(container);
+        };
+
+    </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 

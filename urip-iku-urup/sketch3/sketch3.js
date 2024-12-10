@@ -56,5 +56,18 @@ function checkMouse(x, y) {
  }
 }
 
+function windowResized() {
+    // Resize the canvas whenever the window or container is resized
+    resizeCanvasToParent();
+}
 
+function resizeCanvasToParent() {
+    // Get the size of the parent div
+    const parent = canvas.parent();
+    const width = parent.offsetWidth;
+    const height = parent.offsetHeight;
+
+    // Resize the canvas to match the parent div's dimensions
+    resizeCanvas(width, height);
+}
 
