@@ -95,19 +95,19 @@ function draw() {
 }
 
 function mousePressed() {
-  if (scene1 == true && mouseX > 200 && mouseX < 400) {
+  if (scene1 == true && mouseX > 400 && mouseX < 800) {
     scene1 = false;
     scene2 = true;
   }
-  if (scene2 == true && mouseX > 400 ){
+  if (scene2 == true && mouseX > 800 ){
     scene2 = false; 
     scene3 = true; 
   }
-  if (scene3 == true && mouseX > 400 && mouseY < 200 ){
+  if (scene3 == true && mouseX > 800 && mouseY < 400 ){
     scene3 = false; 
     scene4 = true; 
   }
-  if (scene4 == true && mouseX < 300 && mouseY < 300){
+  if (scene4 == true && mouseX < 600 && mouseY < 600){
     scene4 = false; 
     scene5 = true; 
   }
