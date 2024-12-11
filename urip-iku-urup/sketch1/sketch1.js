@@ -24,7 +24,7 @@ function setup() {
   //let canvas = createCanvas(944, 754);
   canvas.id("p5-canvas");
   canvas.parent("p5-canvas-container");
-  background(0);
+  background(220);
   
 }
 
@@ -50,16 +50,27 @@ function draw() {
    }
    
   videoPlay.play();
-  image(videoPlay, 0, 0, windowWidth, windowHeight);
+  image(videoPlay, 0, 0, width, height);
   
 }
 
+// function mousePressed() {
+//   if (scene1 == true && mouseX > 200 && mouseX < 400) {
+//     scene1 = false;
+//     scene2 = true;
+//   }
+//   if (scene2 == true && mouseX > 400 ){
+//     scene2 = false; 
+//     scene3 = true; 
+//   }
+// }
+
 function mousePressed() {
-  if (scene1 == true && mouseX > 3000) {
+  if (scene1 == true && mouseX > 0.2*windowWidth && mouseX < 0.4*windowHeight) {
     scene1 = false;
     scene2 = true;
   }
-  if (scene2 == true && mouseX > 5*windowWidth && mouseY > windowHeight*1.5 ){
+  if (scene2 == true && mouseX > 0.4*windowHeight ){
     scene2 = false; 
     scene3 = true; 
   }
