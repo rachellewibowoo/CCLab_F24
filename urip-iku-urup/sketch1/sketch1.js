@@ -24,7 +24,7 @@ function setup() {
   //let canvas = createCanvas(944, 754);
   canvas.id("p5-canvas");
   canvas.parent("p5-canvas-container");
-  background(0);
+  background(220);
   
 }
 
@@ -55,11 +55,11 @@ function draw() {
 }
 
 function mousePressed() {
-  if (scene1 == true && mouseX > 0.3*windowWidth && mouseX < 0.6*windowWidth) {
+  if (scene1 == true && mouseX > windowWidth ) {
     scene1 = false;
     scene2 = true;
   }
-  if (scene2 == true && mouseX > 2*windowWidth && mouseY > windowHeight*1.5 ){
+  if (scene2 == true && mouseX > windowHeight && mouseY > windowHeight*1.5 ){
     scene2 = false; 
     scene3 = true; 
   }
