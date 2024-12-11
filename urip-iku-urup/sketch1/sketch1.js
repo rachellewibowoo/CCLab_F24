@@ -59,7 +59,7 @@ function mousePressed() {
     scene1 = false;
     scene2 = true;
   }
-  if (scene2 == true && mouseX > 0.5*windowWidth && mouseY > 0.5*windowHeight){
+  if (scene2 == true && mouseX > 0.5*windowWidth ){
     scene2 = false; 
     scene3 = true; 
   }
