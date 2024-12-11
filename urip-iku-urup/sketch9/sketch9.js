@@ -66,8 +66,8 @@ class Cat {
     fill(0);
     textSize(20);
     textAlign(CENTER, CENTER);
-    text("Humans also adore pets - CATS!", c+c*2, u*1);
-    text("go ahead, pet the cat", c+c*2, u*2);
+    text("Humans also adore pets - CATS!", width/2, height/2 - 100);
+    text("go ahead, pet the cat", width/2, height/2 - 30);
   }
 
 }
@@ -89,7 +89,7 @@ function setup() {
   canvas.id("p5-canvas");
   canvas.parent("p5-canvas-container");
 
-  myCat = new Cat(windowWidth / 2, windowHeight / 2);
+  myCat = new Cat(width / 2, height / 2);
   u = windowHeight*0.5;
   c = windowWidth*0.5;
 
@@ -98,7 +98,7 @@ function setup() {
 function draw() {
 
 
-  background(255);
+  background(0);
   //draw the cat and the text
   myCat.draw();
   myCat.displayText();
