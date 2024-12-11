@@ -50,16 +50,16 @@ function draw() {
    }
    
   videoPlay.play();
-  image(videoPlay, 0, 0, width, height);
+  image(videoPlay, 0, 0, windowWidth, windowHeight);
   
 }
 
 function mousePressed() {
-  if (scene1 == true && mouseX > 1600 && mouseX < 3200) {
+  if (scene1 == true && mouseX > windowWidth/2 && mouseX < windowWidth/2 + 1000) {
     scene1 = false;
     scene2 = true;
   }
-  if (scene2 == true && mouseX > 3200 ){
+  if (scene2 == true && mouseX > windowWidth/2 + 1000 ){
     scene2 = false; 
     scene3 = true; 
   }
