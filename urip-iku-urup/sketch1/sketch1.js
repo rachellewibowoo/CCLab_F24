@@ -24,7 +24,7 @@ function setup() {
   //let canvas = createCanvas(944, 754);
   canvas.id("p5-canvas");
   canvas.parent("p5-canvas-container");
-  background(220);
+  background(0);
   
 }
 
