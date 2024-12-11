@@ -95,7 +95,7 @@ function draw() {
 }
 
 function mousePressed() {
-    if (scene1 == true && mouseX > 0.4*3*width && mouseX < 4*width) {
+    if (scene1 == true && mouseX > 0.4*3*width && mouseX < 0.7*3*width) {
       scene1 = false;
       scene2 = true;
     } else if (scene2 == true && mouseX > 0.7*3*width && mouseY > 0.5*4*height) {
@@ -104,7 +104,7 @@ function mousePressed() {
     } else if (scene3 == true && mouseX > 0.7*3*width && mouseY < 0.5*4*height) {
       scene3 = false;
       scene4 = true;
-    } else if (scene4 == true && mouseX < 3*width && mouseY < 0.7*4*height) {
+    } else if (scene4 == true && mouseX < 0.4*3*width && mouseY < 0.6*4*height) {
       scene4 = false;
       scene5 = true;
     }
