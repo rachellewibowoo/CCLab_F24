@@ -5,7 +5,7 @@ let scene3 = false;
 let scene4 = false; 
 let scene5 = false; 
 let scene6 = false; 
-let allVideos = ["../assets/6.mp4", "../assets/7.mp4", "../assets/8.mp4", "../assets/9.mp4", "../assets/10.mp4"];
+let allVideos = ["../assets/6.mp4", "../assets/7.mp4", "../assets/9.mp4", "../assets/8.mp4", "../assets/10.mp4"];
 let videos = [];
 let videoPlay;
 
@@ -30,8 +30,8 @@ function setup() {
 }
 
 function draw() {
-  fill(0, 1);
-  text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
+//   fill(0, 1);
+//   text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
   
 
  

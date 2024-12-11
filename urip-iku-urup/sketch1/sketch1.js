@@ -12,7 +12,7 @@ function preload() {
   // videos.play();
   for (let i = 0; i < allVideos.length; i++) {
     videos.push(createVideo(allVideos[i]));
-    //videos[i].size(944 × 754);
+    //videos[i].size(944â€ŠÃ—â€Š754);
     videos[i].volume(0.1);
     videos[i].play();
     videos[i].hide();
@@ -29,8 +29,8 @@ function setup() {
 }
 
 function draw() {
-  fill(0, 1);
-  text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
+  // fill(0, 1);
+  // text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
   
   if (scene1 == true) {
     videoPlay = videos[0];
@@ -79,5 +79,4 @@ function resizeCanvasToParent() {
   // Resize the canvas to match the parent div's dimensions
   resizeCanvas(width, height);
 }
-
 

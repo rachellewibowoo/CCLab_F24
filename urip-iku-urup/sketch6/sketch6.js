@@ -1,5 +1,9 @@
-function preload(){
-    vid = loadVideo("../assets/13.mp4");
+var capture;
+var tracker;
+var w, h;
+
+function preload() {
+    vid = createVideo("../assets/13.mp4");
 }
 
 
@@ -9,8 +13,12 @@ function setup() {
     //let canvas = createCanvas(944, 754);
     canvas.id("p5-canvas");
     canvas.parent("p5-canvas-container");
+    w = windowWidth;
+    h = windowHeight;
 
     // Webcam setup
+
+
     capture = createCapture({
         audio: false,
         video: {
@@ -29,9 +37,6 @@ function setup() {
     tracker.init();
     tracker.start(capture.elt);
 
-    // Video setup
-    vid = createVideo("../assets/13.mp4");
-    // vid.size(w, h); // Full canvas video
     vid.volume(0.1);
     vid.loop();
     vid.hide();
@@ -39,14 +44,17 @@ function setup() {
 
 function draw() {
 
-    fill(0, 1);
-  text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
-  
-    background(220);
+    // fill(0, 1);
+    // text("loading...", width/2 - 20, height/2);
+
+    vid.play(); 
+    image(vid, 0, 0, width, height);
+
+    // // background(220);
 
     // Display video as the background
-    let img = vid.get();
-    image(img, 0, 0, w, h); // Full canvas video
+    // let img = vid; 
+    // image(img, 0, 0, w, h); // Full canvas video
 
     // Display webcam feed on top, centered, with padding
     let camWidth = w / 2; // Half the canvas width
@@ -54,7 +62,7 @@ function draw() {
     let camX = (w - camWidth) / 2; // Centered horizontally
     let camY = (h - camHeight) / 2 + 30; // Centered vertically
     image(capture, camX, camY, camWidth, camHeight);
-    
+
 
     // Face tracking
     var positions = tracker.getCurrentPosition();
@@ -85,9 +93,8 @@ function draw() {
             }
         }
 
-        videoPlay.play();
-        image(videoPlay, 0, 0, width, height);
-    }
+
+}
 
 
 function mousePressed() {

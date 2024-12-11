@@ -3,7 +3,7 @@ let playing = true;
 let videoPlay; 
 
 function preload(){
-    vid = loadVideo("../assets/5.mp4");
+    vid = createVideo("../assets/5.mp4");
 }
 
 function setup() {
@@ -13,7 +13,7 @@ function setup() {
   canvas.parent("p5-canvas-container");
 
   vid = createVideo("../assets/5.mp4");
-  vid.size(600, 500);
+  // vid.size(600, 500);
   vid.volume(0.1);
   vid.loop();
   vid.hide(); // hides the html video loader
@@ -21,14 +21,14 @@ function setup() {
 }
 
 function draw() {
-  fill(0, 1);
-  text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
+  // fill(0, 1);
+  // text("click anywhere on the screen", width/2 - 20, height/2);
   
-  background(220);
-    let img = vid.get();
+  
+    // let img = vid.get();
     // image(img, 0, 0); // redraws the video frame by frame in  p5
-    videoPlay.play();
-    image(videoPlay, 0, 0, width, height);
+    vid.play();
+    image(vid, 0, 0, width, height);
 }
 
 function mousePressed() {

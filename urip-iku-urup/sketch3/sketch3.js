@@ -1,6 +1,8 @@
 let s;
 let img; 
 let img2;
+let x; 
+let y; 
 function preload() {
   img = loadImage("../assets/angry-stickman.png");
   img2 = loadImage("../assets/text.png"); 
@@ -12,17 +14,17 @@ function setup() {
   canvas.id("p5-canvas");
   canvas.parent("p5-canvas-container");
   s = round(random(50, 100));
+  x = windowWidth/2
+  y = windowHeight/2
 }
 
 
 
 function draw() {
-  fill(0, 1);
-  text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
   
-
   background(255);
-  image(img2, 50, 170, 300, 100*s*0.01);
+  
+  image(img2, width/2 - 150, height/2 - 20, 300, 100*s*0.01);
   RedCircle(width / 2, height / 2, s);
   if (mouseIsPressed && checkMouse(width / 2, height / 2)) {
     s = s + 1;
@@ -34,7 +36,12 @@ function draw() {
   if(s==50){
     decrease = false;
   }
-  image(img, random(58, 60), random(49, 51), 300, 300); 
+
+
+  image(img, random((width/2 - 150) + 1, (width/2-150) + 1), random((height/2-150) - 1, (height/2-150) + 1), 300, 300); 
+  
+  fill(0, 1);
+  text("press me", width/2 + 10, height/2 + 200);
 }
 
 function mouseReleased() {

@@ -3,7 +3,7 @@ let playing = true;
 let videoPlay; 
 
 function preload(){
-    vid = loadVideo("../assets/11.mp4");
+    vid = createVideo("../assets/11.mp4");
 }
 
 function setup() {
@@ -21,15 +21,15 @@ function setup() {
 }
 
 function draw() {
-  fill(0, 1);
-  text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
+  // fill(0, 1);
+  // text("click anywhere on the screen", width/2 - 20, height/2);
   
 
-  background(220);
-    let img = vid.get();
+  // background(220);
+  //   let img = vid.get();
 
-  videoPlay.play();
-  image(videoPlay, 0, 0, width, height);
+  vid.play();
+  image(vid, 0, 0, width, height);
 }
 
 function mousePressed() {
@@ -55,3 +55,4 @@ function resizeCanvasToParent() {
 
   // Resize the canvas to match the parent div's dimensions
   resizeCanvas(width, height);
+}
