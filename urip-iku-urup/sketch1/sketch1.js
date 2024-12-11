@@ -55,7 +55,7 @@ function draw() {
 }
 
 function mousePressed() {
-  if (scene1 == true && mouseX > 1.2* width && mouseX< 2*width) {
+  if (scene1 == true && mouseX > 1.5*width && mouseX< 2*width) {
     scene1 = false;
     scene2 = true;
   } else if (scene2 == true && mouseX > 2* width) {
