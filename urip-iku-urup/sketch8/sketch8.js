@@ -1,12 +1,19 @@
 let vid;
 let playing = true;
+let videoPlay; 
+
+function preload(){
+    vid = loadVideo("../assets/14.mp4");
+}
+
 
 function setup() {
-  let canvas = createCanvas(600, 500);
-  canvas.parent("sketch8"); 
-  // noCanvas();
+  let canvas = createCanvas(windowWidth, windowHeight);
+  //let canvas = createCanvas(944, 754);
+  canvas.id("p5-canvas");
+  canvas.parent("p5-canvas-container");
 
-  vid = createVideo("assets/14.mp4");
+  vid = createVideo("../assets/14.mp4");
   vid.size(600, 500);
   vid.volume(0.1);
   vid.loop();
@@ -15,9 +22,15 @@ function setup() {
 }
 
 function draw() {
+  fill(0, 1);
+  text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
+  
   background(220);
     let img = vid.get();
-    image(img, 0, 0); // redraws the video frame by frame in  p5
+    // image(img, 0, 0); // redraws the video frame by frame in  p5
+
+    videoPlay.play();
+    image(videoPlay, 0, 0, width, height);
 }
 
 function mousePressed() {

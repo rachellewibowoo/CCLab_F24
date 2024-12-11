@@ -1,50 +1,57 @@
-let vid;
 let playing = true;
 let scene1 = true; // default scene (ur landing page now)
 let scene2 = false; // the new scene to change into
 let scene3 = false; 
-let allVideos = ["assets/main.mp4", "assets/2.mp4", "assets/3.mp4"];
+let allVideos = ["../assets/main.mp4", "../assets/2.mp4", "../assets/3.mp4"];
 let videos = [];
 let videoPlay;
+
 
 function preload() {
   // videos.push[i];
   // videos.play();
   for (let i = 0; i < allVideos.length; i++) {
     videos.push(createVideo(allVideos[i]));
-    videos[i].size(600, 500);
+    //videos[i].size(944 × 754);
     videos[i].volume(0.1);
-    videos[i].loop();
+    videos[i].play();
     videos[i].hide();
   }
 }
 
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
-  canvas.parent('sketch1'); 
+  //let canvas = createCanvas(944, 754);
+  canvas.id("p5-canvas");
+  canvas.parent("p5-canvas-container");
+  background(220);
+  
 }
 
 function draw() {
-  background(220);
- 
+  fill(0, 1);
+  text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
+  
   if (scene1 == true) {
-    videoPlay = videos[0].get();
+    videoPlay = videos[0];
     videos[1].volume(0); 
     videos[2].volume(0);  
   } else if (scene2 == true) {
-    videoPlay = videos[1].get();
+    videoPlay = videos[1];
     videos[1].volume(0.1); 
     videos[0].volume(0); 
     videos[2].volume(0); 
   }
    else if (scene3 == true){
-      videoPlay = videos[2].get();
+    videoPlay = videos[2];
      videos[0].volume(0); 
      videos[1].volume(0); 
      videos[2].volume(0.1); 
    }
+   
+  videoPlay.play();
+  image(videoPlay, 0, 0, width, height);
   
-  image(videoPlay, 0, 0);
 }
 
 function mousePressed() {
@@ -72,3 +79,5 @@ function resizeCanvasToParent() {
   // Resize the canvas to match the parent div's dimensions
   resizeCanvas(width, height);
 }
+
+

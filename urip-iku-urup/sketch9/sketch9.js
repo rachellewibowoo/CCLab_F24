@@ -79,19 +79,23 @@ class Cat {
   let s = 0;
   
   function preload(){
-     mySound = loadSound("catpurring.mp3");
+     mySound = loadSound("../assets/catpurring.mp3");
   }
   
   function setup() {
   
-    let canvas = createCanvas(400, 400);
-    canvas.parent("sketch9"); 
+    let canvas = createCanvas(windowWidth, windowHeight);
+    //let canvas = createCanvas(944, 754);
+    canvas.id("p5-canvas");
+    canvas.parent("p5-canvas-container");
 
-    myCat = new Cat(width / 2, height / 2); 
+    myCat = new Cat(windowWidth / 2, windowHeight/ 2); 
   
   }
   
   function draw() {
+   
+  
     background(255);
     //draw the cat and the text
     myCat.draw();
@@ -110,15 +114,14 @@ class Cat {
   function windowResized() {
     // Resize the canvas whenever the window or container is resized
     resizeCanvasToParent();
-}
-
-function resizeCanvasToParent() {
+  }
+  
+  function resizeCanvasToParent() {
     // Get the size of the parent div
     const parent = canvas.parent();
     const width = parent.offsetWidth;
     const height = parent.offsetHeight;
-
+  
     // Resize the canvas to match the parent div's dimensions
     resizeCanvas(width, height);
-}
   

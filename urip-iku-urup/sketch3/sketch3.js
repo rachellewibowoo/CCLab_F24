@@ -2,18 +2,25 @@ let s;
 let img; 
 let img2;
 function preload() {
-  img = loadImage("angry-stickman.png");
-  img2 = loadImage("text.png"); 
+  img = loadImage("../assets/angry-stickman.png");
+  img2 = loadImage("../assets/text.png"); 
 }
 let decrease = false;
+
 function setup() {
-  let canvas  = createCanvas(400, 400);
-  canvas.parent("sketch3"); 
+  let canvas = createCanvas(windowWidth, windowHeight);
+  canvas.id("p5-canvas");
+  canvas.parent("p5-canvas-container");
   s = round(random(50, 100));
 }
 
 
+
 function draw() {
+  fill(0, 1);
+  text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
+  
+
   background(255);
   image(img2, 50, 170, 300, 100*s*0.01);
   RedCircle(width / 2, height / 2, s);

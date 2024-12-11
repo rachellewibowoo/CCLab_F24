@@ -1,4 +1,3 @@
-let vid;
 let playing = true;
 let scene1 = true; // default scene (ur landing page now)
 let scene2 = false; // the new scene to change into
@@ -6,7 +5,7 @@ let scene3 = false;
 let scene4 = false; 
 let scene5 = false; 
 let scene6 = false; 
-let allVideos = ["assets/6.mp4", "assets/7.mp4", "assets/8.mp4", "assets/9.mp4", "assets/10.mp4"];
+let allVideos = ["../assets/6.mp4", "../assets/7.mp4", "../assets/8.mp4", "../assets/9.mp4", "../assets/10.mp4"];
 let videos = [];
 let videoPlay;
 
@@ -15,7 +14,7 @@ function preload() {
   // videos.play();
   for (let i = 0; i < allVideos.length; i++) {
     videos.push(createVideo(allVideos[i]));
-    videos[i].size(600, 500);
+    // videos[i].size(600, 500);
     videos[i].volume(0.1);
     videos[i].loop();
     videos[i].hide();
@@ -23,16 +22,21 @@ function preload() {
 }
 
 function setup() {
-  let canvas = createCanvas(600, 500);
-  canvas.parent('sketch2'); 
+  let canvas = createCanvas(windowWidth, windowHeight);
+  canvas.id("p5-canvas");
+  canvas.parent("p5-canvas-container");
+  background(255);
 
 }
 
 function draw() {
-  background(220);
+  fill(0, 1);
+  text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
+  
+
  
   if (scene1 == true) {
-    videoPlay = videos[0].get();
+    videoPlay = videos[0];
     videos[1].volume(0); 
     videos[2].volume(0); 
     videos[3].volume(0); 
@@ -40,7 +44,7 @@ function draw() {
  
     
   } else if (scene2 == true) {
-    videoPlay = videos[1].get();
+    videoPlay = videos[1];
     videos[1].volume(0.1); 
     videos[0].volume(0); 
     videos[2].volume(0); 
@@ -49,7 +53,7 @@ function draw() {
  
   }
    if (scene3 == true){
-      videoPlay = videos[2].get();
+      videoPlay = videos[2];
      videos[0].volume(0); 
      videos[1].volume(0); 
      videos[2].volume(1);
@@ -58,7 +62,7 @@ function draw() {
   
    }
      else if(scene4 == true){
-       videoPlay = videos[3].get();
+       videoPlay = videos[3];
      videos[0].volume(0); 
      videos[1].volume(0); 
      videos[2].volume(0); 
@@ -68,7 +72,7 @@ function draw() {
      }
   
      if (scene5 == true){
-      videoPlay = videos[4].get();
+      videoPlay = videos[4];
      videos[0].volume(0); 
      videos[1].volume(0); 
      videos[2].volume(0); 
@@ -78,7 +82,7 @@ function draw() {
        
    }
      else if(scene6 == true){
-       videoPlay = videos[5].get();
+       videoPlay = videos[5];
      videos[0].volume(0); 
      videos[1].volume(0); 
      videos[2].volume(0); 
@@ -86,8 +90,8 @@ function draw() {
      videos[4].volume(0); 
      videos[5].volume(0.1); 
      }
-  
-  image(videoPlay, 0, 0);
+  videoPlay.play();
+  image(videoPlay, 0, 0, width, height);
 }
 
 function mousePressed() {

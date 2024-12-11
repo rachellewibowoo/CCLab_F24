@@ -1,7 +1,14 @@
+function preload(){
+    vid = loadVideo("../assets/13.mp4");
+}
+
+
 function setup() {
 
-    let canvas = createCanvas(w, h);
-    canvas.parent("sketch6"); 
+    let canvas = createCanvas(windowWidth, windowHeight);
+    //let canvas = createCanvas(944, 754);
+    canvas.id("p5-canvas");
+    canvas.parent("p5-canvas-container");
 
     // Webcam setup
     capture = createCapture({
@@ -23,14 +30,18 @@ function setup() {
     tracker.start(capture.elt);
 
     // Video setup
-    vid = createVideo("assets/13.mp4");
-    vid.size(w, h); // Full canvas video
+    vid = createVideo("../assets/13.mp4");
+    // vid.size(w, h); // Full canvas video
     vid.volume(0.1);
     vid.loop();
     vid.hide();
 }
 
 function draw() {
+
+    fill(0, 1);
+  text("loading... click anywhere on the screen to make it load faster", width/2-100, height/2);
+  
     background(220);
 
     // Display video as the background
@@ -43,6 +54,7 @@ function draw() {
     let camX = (w - camWidth) / 2; // Centered horizontally
     let camY = (h - camHeight) / 2 + 30; // Centered vertically
     image(capture, camX, camY, camWidth, camHeight);
+    
 
     // Face tracking
     var positions = tracker.getCurrentPosition();
@@ -72,6 +84,9 @@ function draw() {
                 text("yay!!", centerX, centerY - 80);
             }
         }
+
+        videoPlay.play();
+        image(videoPlay, 0, 0, width, height);
     }
 
 
