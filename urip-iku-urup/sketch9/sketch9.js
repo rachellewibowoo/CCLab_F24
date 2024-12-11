@@ -66,8 +66,8 @@ class Cat {
     fill(0);
     textSize(20);
     textAlign(CENTER, CENTER);
-    text("Humans also adore pets - CATS!", windowWidth/2 , height/2 - 100);
-    text("go ahead... & pet the cat", windowWidth/2, height/2 + 100);
+    text("Humans also adore pets - CATS!", width/2, height/2 - 100);
+    text("go ahead... & pet the cat", width/2, height/2 + 130);
   }
 
 }
