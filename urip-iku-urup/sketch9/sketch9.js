@@ -66,8 +66,8 @@ class Cat {
     fill(0);
     textSize(20);
     textAlign(CENTER, CENTER);
-    text("Humans also adore pets - CATS!", width/2, height/2 - 100);
-    text("go ahead... & pet the cat", width/2, height/2 + 130);
+    text("Humans also adore pets - CATS!", c+c*2, u*1);
+    text("go ahead, pet the cat", c+c*2, u*2);
   }
 
 }
@@ -97,10 +97,8 @@ function setup() {
 
 function draw() {
 
-  fill(0, 1);
-  text("click anywhere on the screen", width/2 - 20, height/2);
-  
-  background(0);
+
+  background(255);
   //draw the cat and the text
   myCat.draw();
   myCat.displayText();
