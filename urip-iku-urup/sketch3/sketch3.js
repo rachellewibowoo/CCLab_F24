@@ -40,8 +40,6 @@ function draw() {
 
   image(img, random((width/2 - 150) + 1, (width/2-150) + 1), random((height/2-150) - 1, (height/2-150) + 1), 300, 300); 
   
-  fill(0, 1);
-  text("press me", width/2 + 10, height/2 + 200);
 }
 
 function mouseReleased() {
