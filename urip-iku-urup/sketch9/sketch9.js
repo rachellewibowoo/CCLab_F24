@@ -9,11 +9,13 @@ class Cat {
   draw() {
     c = random(c-2, c+2);
     fill(this.bodyColor);
-    //cat mouth
-    fill(0);
-    stroke(0);
-    strokeWeight(2);
-    arc(c + 20, u + 300, 40, 20, 0, PI);
+
+    // //cat mouth
+    // fill(0);
+    // stroke(0);
+    // strokeWeight(2);
+    // arc(c + 20, u + 300, 40, 20, 0, PI);
+
     //cat body
     fill(this.bodyColor);
     noStroke();
@@ -63,7 +65,7 @@ class Cat {
 
   //adding texts
   displayText() {
-    fill(0);
+    fill(this.bodyColor);
     textSize(20);
     textAlign(CENTER, CENTER);
     text("Humans also adore pets - CATS!", width/2, height/2 - 100);
@@ -96,8 +98,6 @@ function setup() {
 }
 
 function draw() {
-
-
   background(0);
   //draw the cat and the text
   myCat.draw();
