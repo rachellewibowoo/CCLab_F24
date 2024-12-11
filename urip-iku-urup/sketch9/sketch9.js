@@ -65,7 +65,7 @@ class Cat {
 
   //adding texts
   displayText() {
-    fill(this.bodyColor);
+    fill(0);
     textSize(20);
     textAlign(CENTER, CENTER);
     text("Humans also adore pets - CATS!", width/2, height/2 - 100);
@@ -115,7 +115,7 @@ function mousePressed() {
 
 function windowResized() {
   // Resize the canvas whenever the window or container is resized
-  resizeCanvasToParent();
+  resizeCanvasToParent(windowWidth, windowHeight);
 }
 
 function resizeCanvasToParent() {
@@ -125,5 +125,5 @@ function resizeCanvasToParent() {
   const height = parent.offsetHeight;
 
   // Resize the canvas to match the parent div's dimensions
-  resizeCanvas(width, height);
+  resizeCanvas();
 }
