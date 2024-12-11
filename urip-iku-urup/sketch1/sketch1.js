@@ -88,6 +88,6 @@ function resizeCanvasToParent() {
   const height = parent.offsetHeight;
 
   // Resize the canvas to match the parent div's dimensions
-  resizeCanvas(width, height);
+  resizeCanvas(windowWidth, windowHeight);
 }
 
