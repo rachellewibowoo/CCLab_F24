@@ -54,27 +54,27 @@ function draw() {
   
 }
 
-// function mousePressed() {
-//   if (scene1 == true && mouseX > 200 && mouseX < 400) {
-//     scene1 = false;
-//     scene2 = true;
-//   }
-//   if (scene2 == true && mouseX > 400 ){
-//     scene2 = false; 
-//     scene3 = true; 
-//   }
-// }
-
 function mousePressed() {
-  if (scene1 == true && mouseX > 0.2*windowWidth && mouseX < 0.4*windowHeight) {
+  if (scene1 == true && mouseX > 200 && mouseX < 400) {
     scene1 = false;
     scene2 = true;
   }
-  if (scene2 == true && mouseX > 0.4*windowHeight ){
+  if (scene2 == true && mouseX > 400 ){
     scene2 = false; 
     scene3 = true; 
   }
 }
+
+// function mousePressed() {
+//   if (scene1 == true && mouseX > 0.2*windowWidth && mouseX < 0.4*windowHeight) {
+//     scene1 = false;
+//     scene2 = true;
+//   }
+//   if (scene2 == true && mouseX > 0.4*windowHeight ){
+//     scene2 = false; 
+//     scene3 = true; 
+//   }
+// }
 
 function windowResized() {
   // Resize the canvas whenever the window or container is resized

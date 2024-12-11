@@ -94,45 +94,45 @@ function draw() {
   image(videoPlay, 0, 0, width, height);
 }
 
-// function mousePressed() {
-//   if (scene1 == true && mouseX > 200 && mouseX < 400) {
-//     scene1 = false;
-//     scene2 = true;
-//   }
-//   if (scene2 == true && mouseX > 400 ){
-//     scene2 = false; 
-//     scene3 = true; 
-//   }
-//   if (scene3 == true && mouseX > 400 && mouseY < 200 ){
-//     scene3 = false; 
-//     scene4 = true; 
-//   }
-//   if (scene4 == true && mouseX < 300 && mouseY < 300){
-//     scene4 = false; 
-//     scene5 = true; 
-//   }
-
-// }
-
 function mousePressed() {
-    if (scene1 == true && mouseX > 0.2 * windowWidth && mouseX < 0.4 * windowWidth) {
-      scene1 = false;
-      scene2 = true;
-    }
-    if (scene2 == true && mouseX > 0.4 * windowWidth) {
-      scene2 = false; 
-      scene3 = true; 
-    }
-    if (scene3 == true && mouseX > 0.4 * windowWidth && mouseY < 0.2 * windowHeight) {
-      scene3 = false; 
-      scene4 = true; 
-    }
-    if (scene4 == true && mouseX < 0.3 * windowWidth && mouseY < 0.3 * windowHeight) {
-      scene4 = false; 
-      scene5 = true; 
-    }
+  if (scene1 == true && mouseX > 200 && mouseX < 400) {
+    scene1 = false;
+    scene2 = true;
   }
-  
+  if (scene2 == true && mouseX > 400 ){
+    scene2 = false; 
+    scene3 = true; 
+  }
+  if (scene3 == true && mouseX > 400 && mouseY < 200 ){
+    scene3 = false; 
+    scene4 = true; 
+  }
+  if (scene4 == true && mouseX < 300 && mouseY < 300){
+    scene4 = false; 
+    scene5 = true; 
+  }
+
+}
+
+// function mousePressed() {
+//     if (scene1 == true && mouseX > 0.2 * windowWidth && mouseX < 0.4 * windowWidth) {
+//       scene1 = false;
+//       scene2 = true;
+//     }
+//     if (scene2 == true && mouseX > 0.4 * windowWidth) {
+//       scene2 = false; 
+//       scene3 = true; 
+//     }
+//     if (scene3 == true && mouseX > 0.4 * windowWidth && mouseY < 0.2 * windowHeight) {
+//       scene3 = false; 
+//       scene4 = true; 
+//     }
+//     if (scene4 == true && mouseX < 0.3 * windowWidth && mouseY < 0.3 * windowHeight) {
+//       scene4 = false; 
+//       scene5 = true; 
+//     }
+//   }
+
 
 function windowResized() {
     // Resize the canvas whenever the window or container is resized
