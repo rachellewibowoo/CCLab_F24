@@ -55,11 +55,11 @@ function draw() {
 }
 
 function mousePressed() {
-  if (scene1 == true && mouseX > 200 && mouseX < 400) {
+  if (scene1 == true && mouseX > 0.3*windowWidth && mouseX < 0.6*windowWidth) {
     scene1 = false;
     scene2 = true;
   }
-  if (scene2 == true && mouseX > 400 ){
+  if (scene2 == true && mouseX > 0.6*windowWidth ){
     scene2 = false; 
     scene3 = true; 
   }
@@ -78,7 +78,7 @@ function mousePressed() {
 
 function windowResized() {
   // Resize the canvas whenever the window or container is resized
-  resizeCanvasToParent();
+  resizeCanvasToParent(windowWidth, windowHeight);
 }
 
 function resizeCanvasToParent() {
