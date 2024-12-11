@@ -98,13 +98,13 @@ function mousePressed() {
     if (scene1 == true && mouseX > 0.4*3*width && mouseX < 0.7*3*width) {
       scene1 = false;
       scene2 = true;
-    } else if (scene2 == true && mouseX > 0.7 * 3*width && mouseY > 0.5*4*height) {
+    } else if (scene2 == true && mouseX > 0.7*3*width && mouseY > 0.5*4*height) {
       scene2 = false;
       scene3 = true;
-    } else if (scene3 == true && mouseX > 0.7 * 3*width && mouseY < 0.5 * 4*height) {
+    } else if (scene3 == true && mouseX > 0.7*3*width && mouseY < 0.5*4*height) {
       scene3 = false;
       scene4 = true;
-    } else if (scene4 == true && mouseX < 0.4 * 3*width && mouseY < 0.6 * 4*height) {
+    } else if (scene4 == true && mouseX < 0.4*3*width && mouseY < 0.6*4*height) {
       scene4 = false;
       scene5 = true;
     }
@@ -161,5 +161,5 @@ function resizeCanvasToParent() {
     const height = parent.offsetHeight;
 
     // Resize the canvas to match the parent div's dimensions
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas();
 }
