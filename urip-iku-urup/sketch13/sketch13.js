@@ -23,6 +23,9 @@ function setup() {
 }
 
 function draw() {
+  fill(0, 1);
+  text("loading...", width/2-100, height/2);
+  
 
   // fill(0, 1);
   // text("click anywhere on the screen", width/2 - 20, height/2);
